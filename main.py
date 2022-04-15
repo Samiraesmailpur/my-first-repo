@@ -1,47 +1,16 @@
-# 1
-import random
+# This is a sample Python script.
 
-# 5 объявление функции generator с аргументом number
-def generator(number):
-    subject = random.randint(1, 4)
-    if number > subject:
-        print('number > ', subject);
-        return False
-    elif number == subject:
-        print("==", subject)
-        return True
-    else:
-        print('number < ', subject)
-        return False
+# Press ⌃R to execute it or replace it with your code.
+# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-# 3 объявление функции main без аргументов
-def main():
-    print("hello player")
-    while True:
 
-        text = input("what is the number?")
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
-        try:
-            # Переменной number мы ПРИСВАЕВАЕМ РЕЗУЛЬТАТ ВЫПОЛНЕНИЯ ФУНКЦИИ int()
-            # передавая как аргумент переменную text
-            number = int(text)
-        except ValueError:
-            print('entered value is not a number')
-            exit(0)
 
-        # 4
-        # Переменной is_correct мы ПРИСВАЕВАЕМ РЕЗУЛЬТАТ ВЫПОЛНЕНИЯ ФУНКЦИИ generator(number)
-        # передавая как аргумент переменную number
-        is_correct = generator(number)
-        # если is_correct True
-        if is_correct:
-            print("you are winner")
-            break
-        else:
-            end = input("Do you want to continue? [yes/no]")
-            if end == "no":
-                break
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
 
-# 2 вызов функции main без аргументов
-main()
-
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
