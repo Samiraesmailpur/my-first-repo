@@ -131,17 +131,15 @@ while x != '4':
                 p = '\n'.join(slovar.values())
                 data = file.write(p)
 
-
-
-
-
-
-
-
-
-
-
-
-
 print('bye')
+
+
+
+def smira(a, b, c, d):
+    return (a + b) * (c) / (d)
+print(smira(14,88,3,3))
+
+
+
+
 

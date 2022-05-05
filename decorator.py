@@ -3,7 +3,6 @@ def calls_limit(limit):
         count = 0
         def wrapped(*a, **kw):
             nonlocal count
-            nonlocal limit
             count += 1
             if count > limit:
                 raise RuntimeError("Allowed calls exceeded")
