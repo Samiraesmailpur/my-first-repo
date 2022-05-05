@@ -1,14 +1,13 @@
-def calls_limit(*args, **kwargs):
+def calls_limit(limit):
     def my_decorator(func):
         count = 0
         def wrapped(*a, **kw):
             nonlocal count
+            nonlocal limit
             count += 1
-            print(count)
-            if count >= 4:
+            if count > limit:
                 raise RuntimeError("Allowed calls exceeded")
             return func(*a, **kw)
-        count = 0
         return wrapped
     return my_decorator
 
@@ -20,6 +19,8 @@ test1()
 test1()
 test1()
 test1()
+
+
 
 
 
