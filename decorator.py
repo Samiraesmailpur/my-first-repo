@@ -12,7 +12,7 @@ def calls_limit(limit):
 
 @calls_limit(limit=3)
 def test1(*a, **kw):
-    print()
+    print('Hello world')
 
 test1()
 test1()
