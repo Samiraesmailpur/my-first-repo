@@ -1,16 +1,14 @@
+import functools
+
 def cached(func):
-    cache = {}
-    def a(*args, **kwargs):
-        nonlocal cache
-        print('function started')
-        if not cache.get(args):
-            g = func(*args, **kwargs)
-            cache[args] = g
-            return g
-        else:
-            print('using cache')
-            return cache[args]
-    return a
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        cache_key = args + tuple(kwargs.items())
+        if cache_key not in wrapper.cache:
+            wrapper.cache[cache_key] = func(*args, **kwargs)
+        return wrapper.cache[cache_key]
+    wrapper.cache = dict()
+    return wrapper
 
 @cached
 def main(array):
@@ -24,6 +22,17 @@ print(main(100000000))
 
 
 
+# def wraps(*args, **kwargs):
+#     nonlocal cache
+#     if not cache.get(args):
+#         g = func(*args, **kwargs)
+#         cache[args] = g
+#         return g
+#     else:
+#         return cache[args]
+#
+#
+# return wraps
 
 
 
@@ -36,44 +45,3 @@ print(main(100000000))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def cached(func):
-    cache = {}
-    def a(*args, **kwargs):
-        nonlocal cache
-        if not cache.get(args):
-            g = func(*args, **kwargs)
-            cache[args] = g
-            return g
-        else:
-            return cache[args]
-
-    return a
-
-@cached
-def fib(n):
-    if n == 1 or n == 2:
-        return 1
-    else:
-        return fib(n - 1) + fib(n - 2)
-
-# print(fib(3))
